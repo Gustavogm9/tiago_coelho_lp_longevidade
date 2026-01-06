@@ -60,7 +60,18 @@ export const Footer = () => {
 
                 <div className="border-t border-gray-800 pt-8 text-center text-xs text-gray-500">
                     <p>© {new Date().getFullYear()} Tiago Coelho - Método Defini12. Todos os direitos reservados.</p>
-                    <p className="mt-2 text-gray-600">Desenvolvido por Guilds Lab</p>
+                    <p className="mt-2 text-gray-600">
+                        Desenvolvido por <a href="https://guilds.com.br" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Guilds</a>
+                        {" • "}
+                        <a
+                            href="https://wa.me/5517997520867?text=Vi%20que%20desenvolveu%20o%20site%20do%20Personal%20Tiago%20Coelho%20e%20gostaria%20de%20desenvolver%20o%20meu"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-primary transition-colors"
+                        >
+                            Quero um site assim
+                        </a>
+                    </p>
                 </div>
             </div>
         </footer>
