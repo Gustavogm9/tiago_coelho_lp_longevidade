@@ -45,7 +45,7 @@ export const Testimonials = () => {
     ];
 
     const content = [
-        { icon: Users, text: "Mulheres Transformadas", value: "2,000+" },
+        { icon: Users, text: "Alunos Transformados", value: "300+" },
         { icon: TrendingDown, text: "Média de peso perdido (3 meses)", value: "6kg" },
         { icon: CheckCircle, text: "Atingem o objetivo no prazo", value: "94%" },
         { icon: Star, text: "Nota média de satisfação", value: "9.8/10" },
