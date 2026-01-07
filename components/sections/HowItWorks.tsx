@@ -13,7 +13,7 @@ export const HowItWorks = () => {
         {
             icon: ChartBar,
             title: "AVALIAÇÃO COMPLETA (SEMANA 1)",
-            desc: ["Videochamada de 30-40min comigo", "Analiso seu objetivo, rotina e histórico", "Defino seu plano de ação personalizado"],
+            desc: ["Diagnóstico completo via WhatsApp", "Analiso seu objetivo, rotina e histórico", "Defino seu plano de ação personalizado"],
         },
         {
             icon: Dumbbell,
