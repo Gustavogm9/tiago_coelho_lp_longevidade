@@ -98,7 +98,7 @@ export const Pricing = () => {
                         <div className="text-center mt-auto">
                             <p className="text-sm text-gray-400 line-through">De R$ 994,00</p>
                             <p className="text-3xl font-bold text-success mb-1">R$ 497,00 <span className="text-sm font-normal text-gray-500">à vista</span></p>
-                            <p className="text-sm text-gray-500 mb-6">ou 12x de R$ 51,40</p>
+                            <p className="text-sm text-gray-500 mb-6">ou 3x de R$ 177,00</p>
                             <a
                                 href="https://www.asaas.com/c/9fkhuiiti5hkr5ey"
                                 target="_blank"
@@ -202,10 +202,8 @@ export const Pricing = () => {
                         </h3>
                         <div className="grid md:grid-cols-2 gap-4">
                             {[
-                                "E-book '10 Receitas Fit que Aceleram o Emagrecimento'",
-                                "Planilha de Controle de Evolução",
-                                "Comunidade Exclusiva de Alunas",
-                                "[BÔNUS SURPRESA]: Aula ao Vivo Mensal de Q&A"
+                                "E-book Doces Fit",
+                                "E-book Pré e Pós Treino"
                             ].map((bonus, i) => (
                                 <div key={i} className="flex items-center gap-3 bg-white/60 p-4 rounded-lg">
                                     <div className="w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center shrink-0">✓</div>
