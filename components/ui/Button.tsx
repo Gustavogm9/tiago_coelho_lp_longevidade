@@ -30,21 +30,21 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         },
         ref
     ) => {
-        const baseStyles = "inline-flex items-center justify-center font-bold transition-colors rounded-full focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed";
+        const baseStyles = "inline-flex items-center justify-center font-bold transition-all duration-300 rounded-2xl focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed tracking-wide";
 
         const variants = {
-            primary: "bg-accent text-white hover:bg-orange-600 shadow-lg shadow-orange-500/30",
-            secondary: "bg-primary text-white hover:bg-blue-900 shadow-lg shadow-blue-900/30",
-            accent: "bg-success text-white hover:bg-green-600 shadow-lg shadow-green-500/30",
-            outline: "border-2 border-primary text-primary hover:bg-primary/10",
-            ghost: "text-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800",
+            primary: "bg-gradient-to-r from-accent to-accent-dark text-white shadow-premium-accent hover:shadow-lg",
+            secondary: "bg-gradient-to-r from-primary to-primary-light text-white shadow-premium-primary hover:shadow-lg",
+            accent: "bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-lg shadow-green-500/20 hover:shadow-green-500/30",
+            outline: "border-2 border-primary text-primary hover:bg-primary/5",
+            ghost: "text-gray-600 hover:bg-gray-100",
         };
 
         const sizes = {
-            sm: "text-sm px-4 py-2",
+            sm: "text-sm px-5 py-2.5",
             md: "text-base px-6 py-3",
             lg: "text-lg px-8 py-4",
-            xl: "text-xl px-12 py-5", // For main CTAs
+            xl: "text-xl px-12 py-5",
         };
 
         const width = fullWidth ? "w-full" : "";
@@ -52,7 +52,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         return (
             <motion.button
                 ref={ref}
-                whileHover={{ scale: 1.02, y: -2 }}
+                whileHover={{ scale: 1.02, y: -1 }}
                 whileTap={{ scale: 0.98 }}
                 className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${width} ${className}`}
                 disabled={isLoading || disabled}

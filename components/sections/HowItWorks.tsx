@@ -1,61 +1,79 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Calendar, ChartBar, Dumbbell, BicepsFlexed, RefreshCw, PartyPopper } from "lucide-react";
+import { MessageCircle, ClipboardCheck, Dumbbell, BicepsFlexed, RefreshCw, PartyPopper } from "lucide-react";
+
+const stepColors = [
+    "from-green-500 to-emerald-600",
+    "from-blue-500 to-blue-600",
+    "from-orange-500 to-orange-600",
+    "from-violet-500 to-violet-600",
+    "from-cyan-500 to-cyan-600",
+    "from-amber-500 to-yellow-500",
+];
 
 export const HowItWorks = () => {
     const steps = [
         {
-            icon: Calendar,
-            title: "VOCÊ SE INSCREVE (HOJE)",
-            desc: ["Escolhe o plano ideal para você", "Recebe confirmação de matrícula", "Agenda sua avaliação inicial"],
+            icon: MessageCircle,
+            title: "ENTRE EM CONTATO",
+            timeline: "HOJE",
+            desc: ["Fale comigo pelo WhatsApp", "Me conte seu objetivo e rotina", "Escolhemos o melhor plano para você"],
         },
         {
-            icon: ChartBar,
-            title: "AVALIAÇÃO COMPLETA (SEMANA 1)",
-            desc: ["Diagnóstico completo via WhatsApp", "Analiso seu objetivo, rotina e histórico", "Defino seu plano de ação personalizado"],
+            icon: ClipboardCheck,
+            title: "AVALIAÇÃO INICIAL",
+            timeline: "1ª SESSÃO",
+            desc: ["Encontro presencial para avaliação completa", "Avaliação postural e testes de movimento (FMS)", "Anamnese: histórico, limitações e metas"],
         },
         {
             icon: Dumbbell,
-            title: "RECEBE TODO O MATERIAL (SEMANA 1)",
-            desc: ["Treino montado e carregado no app", "Cardápio nutricional da nutricionista", "Tutorial de como usar o app", "Acesso liberado imediatamente"],
+            title: "TREINO PERSONALIZADO",
+            timeline: "SEMANA 1",
+            desc: ["Programa montado sob medida para você", "Baseado 100% na sua avaliação", "Adaptado ao local de treino escolhido"],
         },
         {
             icon: BicepsFlexed,
-            title: "COMEÇA A TRANSFORMAÇÃO (SEMANA 1-4)",
-            desc: ["Segue seu treino pelo app", "Segue o cardápio da nutricionista", "Check-in semanal de evolução", "Primeiros resultados em 2-3 semanas"],
+            title: "PRIMEIRAS SESSÕES",
+            timeline: "SEMANA 1-4",
+            desc: ["Treinamos juntos com correção em tempo real", "Aprendizado de técnica e execução correta", "Primeiros resultados em 2-3 semanas"],
         },
         {
             icon: RefreshCw,
-            title: "EVOLUÇÃO CONTÍNUA (MÊS 2+)",
-            desc: ["Mudança de treino todo mês (planos 6 e 12 meses)", "Novos cardápios conforme evolução", "Suporte contínuo via WhatsApp (plano 12 meses)", "Ajustes sempre que necessário"],
+            title: "EVOLUÇÃO CONTÍNUA",
+            timeline: "MÊS 2+",
+            desc: ["Progressão de carga e novos estímulos", "Reavaliações periódicas", "Ajustes imediatos conforme sua evolução"],
         },
         {
             icon: PartyPopper,
-            title: "RESULTADO FINAL",
-            desc: ["Corpo transformado", "Hábitos saudáveis estabelecidos", "Conhecimento para manter resultados", "Opção de renovar ou seguir sozinha"],
+            title: "RESULTADO",
+            timeline: "SEU FUTURO",
+            desc: ["Corpo transformado com saúde", "Hábitos saudáveis e autonomia", "Conhecimento para manter resultados"],
         },
     ];
 
     return (
-        <section className="py-20 bg-white">
-            <div className="container px-4 mx-auto max-w-5xl">
+        <section className="py-24 bg-mesh-light relative overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
+
+            <div className="container px-4 mx-auto max-w-5xl relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-3xl md:text-5xl font-display font-bold text-gray-900">
+                    <span className="inline-block text-sm font-bold text-primary tracking-[0.15em] uppercase mb-4">Passo a passo</span>
+                    <h2 className="text-3xl md:text-5xl font-display font-extrabold text-gray-900 tracking-tight">
                         COMO FUNCIONA NA PRÁTICA?
                     </h2>
                 </motion.div>
 
                 <div className="relative">
-                    {/* Vertical Line */}
-                    <div className="absolute left-8 md:left-1/2 top-4 bottom-0 w-1 bg-gray-200 -ml-0.5 md:transform md:-translate-x-1/2" />
+                    {/* Gradient vertical line */}
+                    <div className="absolute left-8 md:left-1/2 top-4 bottom-0 w-[2px] bg-gradient-to-b from-primary/30 via-accent/30 to-success/30 -ml-[1px] md:transform md:-translate-x-[1px]" />
 
-                    <div className="space-y-12">
+                    <div className="space-y-10">
                         {steps.map((step, index) => {
                             const Icon = step.icon;
                             return (
@@ -64,33 +82,31 @@ export const HowItWorks = () => {
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className={`relative flex flex-col md:flex-row items-center md:items-start gap-8 ${index % 2 === 0 ? "md:flex-row-reverse" : ""
-                                        }`}
+                                    transition={{ delay: index * 0.08 }}
+                                    className={`relative flex flex-col md:flex-row items-center md:items-start gap-8 ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}
                                 >
-                                    {/* Step Number Badge (Mobile: Left, Desktop: Center) */}
-                                    <div className="absolute left-8 md:left-1/2 -ml-8 md:-ml-8 w-16 h-16 bg-white border-4 border-primary rounded-full flex items-center justify-center z-10 shadow-lg">
-                                        <span className="text-2xl font-bold text-primary">{index + 1}</span>
+                                    {/* Step Number Badge with gradient */}
+                                    <div className={`absolute left-8 md:left-1/2 -ml-7 md:-ml-7 w-14 h-14 rounded-2xl bg-gradient-to-br ${stepColors[index]} flex items-center justify-center z-10 shadow-lg`}>
+                                        <span className="text-lg font-extrabold text-white">{index + 1}</span>
                                     </div>
 
-                                    {/* Icon Card (for Mobile visual) - or Integrated in content */}
-                                    <div className="ml-20 md:ml-0 md:w-1/2 flex justify-center md:hidden">
-                                        {/* Mobile connector spacer */}
-                                    </div>
+                                    <div className="ml-20 md:ml-0 md:w-1/2 flex justify-center md:hidden" />
 
-                                    <div className={`w-full md:w-1/2 pl-24 md:pl-0 ${index % 2 === 0 ? "md:pr-16 text-left md:text-right" : "md:pl-16 text-left"
-                                        }`}>
-                                        <div className="bg-gray-50 p-6 rounded-xl hover:shadow-md transition-shadow">
-                                            <div className={`flex items-center gap-3 mb-4 text-primary ${index % 2 === 0 ? "md:flex-row-reverse" : ""
-                                                }`}>
-                                                <Icon className="w-8 h-8" />
-                                                <h3 className="text-xl font-bold">{step.title}</h3>
+                                    <div className={`w-full md:w-1/2 pl-24 md:pl-0 ${index % 2 === 0 ? "md:pr-16 text-left md:text-right" : "md:pl-16 text-left"}`}>
+                                        <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl hover:shadow-premium transition-all duration-300 border border-gray-100/80 group">
+                                            <div className={`flex items-center gap-3 mb-1 ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}>
+                                                <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${stepColors[index]} flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                                                    <Icon className="w-5 h-5 text-white" />
+                                                </div>
+                                                <div>
+                                                    <h3 className="text-lg font-extrabold text-gray-900 tracking-tight">{step.title}</h3>
+                                                    <span className="text-xs font-bold text-gray-500 tracking-wider">{step.timeline}</span>
+                                                </div>
                                             </div>
-                                            <ul className={`space-y-2 text-gray-700 font-medium ${index % 2 === 0 ? "md:flex md:flex-col md:items-end" : ""}`}>
+                                            <ul className={`space-y-1.5 text-gray-600 mt-4 ${index % 2 === 0 ? "md:flex md:flex-col md:items-end" : ""}`}>
                                                 {step.desc.map((item, i) => (
-                                                    <li key={i} className={`flex items-start gap-2 ${index % 2 === 0 ? "md:flex-row-reverse md:text-right" : ""
-                                                        }`}>
-                                                        <span className="text-accent mt-1.5">•</span>
+                                                    <li key={i} className={`flex items-start gap-2 text-[15px] ${index % 2 === 0 ? "md:flex-row-reverse md:text-right" : ""}`}>
+                                                        <span className="w-1 h-1 rounded-full bg-accent mt-2.5 shrink-0" />
                                                         <span>{item}</span>
                                                     </li>
                                                 ))}
@@ -98,7 +114,6 @@ export const HowItWorks = () => {
                                         </div>
                                     </div>
 
-                                    {/* Empty Spacer for the other side */}
                                     <div className="hidden md:block w-1/2" />
                                 </motion.div>
                             );

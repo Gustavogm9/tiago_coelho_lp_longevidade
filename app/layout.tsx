@@ -5,18 +5,18 @@ import "./globals.css";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
-  weight: ["700"],
+  weight: ["500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
-  title: "Tiago Coelho - Personal Trainer",
-  description: "Transforme seu corpo em 90 dias com consultoria online.",
+  title: "Tiago Coelho - Personal Trainer Presencial em São José do Rio Preto",
+  description: "Personal Trainer presencial em São José do Rio Preto/SP. Treino personalizado individual ou em dupla, com correção em tempo real e resultados comprovados. CREF 155340-G/SP.",
 };
 
 export default function RootLayout({

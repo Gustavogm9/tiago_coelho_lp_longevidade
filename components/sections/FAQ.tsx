@@ -8,32 +8,35 @@ export const FAQ = () => {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     const faqs = [
-        { q: "Preciso de academia ou equipamentos?", a: "Não necessariamente! O treino é personalizado conforme sua realidade. Se você tem acesso a academia, monto um treino de academia. Se vai treinar em casa, adapto para treino em casa (com ou sem equipamentos)." },
-        { q: "O app funciona em iPhone e Android?", a: "Sim! O app funciona em qualquer smartphone (iOS ou Android) e também pode ser acessado pelo computador se preferir." },
-        { q: "A nutricionista pode prescrever minha dieta?", a: "Sim! Temos uma nutricionista formada e registrada no CRN no time. Ela monta seu cardápio personalizado baseado em seus dados e objetivos." },
-        { q: "Quanto tempo para ver resultados?", a: "A maioria das alunas começa a notar mudanças em 2-3 semanas. Resultados visíveis para outras pessoas em 4-6 semanas. Transformação completa em 3-6 meses dependendo do objetivo." },
-        { q: "E se eu não conseguir seguir um dia?", a: "Não tem problema! A vida acontece. O importante é a consistência ao longo do tempo, não a perfeição todos os dias. Vamos te ajudar a encontrar estratégias para encaixar o treino na sua rotina." },
-        { q: "Posso renovar ou mudar de plano depois?", a: "Com certeza! Ao final do seu plano, você pode renovar, fazer upgrade, ou se sentir confiante para seguir sozinha com o que aprendeu." },
-        { q: "Como funciona o suporte VIP?", a: "No plano anual, você tem acesso direto ao meu WhatsApp particular. Pode mandar mensagem, áudio, vídeo - respondo em até 24h úteis. Nos outros planos, o suporte é via e-mail/Instagram." },
-        { q: "Por que os planos mais longos têm mais benefícios?", a: "Porque transformação real leva tempo. Quando você se compromete por mais tempo, eu posso investir mais em você: mais cardápios, mudanças mensais de treino, e no anual, meu suporte ilimitado." },
-        { q: "Tem garantia?", a: "Sim! 7 dias de garantia incondicional. Se não gostar, devolvo 100% do valor. Depois dos 7 dias, não há reembolso, mas vamos trabalhar juntos para você ter o melhor resultado possível." },
+        { q: "Onde são os treinos?", a: "Atendo em academias parceiras, estúdios e espaços ao ar livre em São José do Rio Preto. Combinamos o local que melhor se encaixa na sua rotina e preferência." },
+        { q: "Preciso ter matrícula em academia?", a: "Depende do local que escolhermos. Se for em academia, sim. Mas também posso treinar você em estúdios ou ao ar livre, sem necessidade de matrícula." },
+        { q: "Como funciona o plano Duo?", a: "Você treina com um(a) amigo(a), cônjuge ou familiar no mesmo horário. Cada um recebe treino individualizado para seus objetivos, mas compartilham a sessão. O valor é por pessoa." },
+        { q: "E se eu precisar faltar?", a: "Entendo que imprevistos acontecem. Avisando com antecedência, remarcamos a sessão dentro da mesma semana, conforme disponibilidade de horários." },
+        { q: "Quanto tempo para ver resultados?", a: "A maioria dos alunos começa a notar mudanças em 2-3 semanas. Resultados visíveis em 4-6 semanas. Transformação significativa em 3-6 meses, dependendo do objetivo e frequência." },
+        { q: "Posso mudar de frequência depois?", a: "Com certeza! Podemos ajustar a frequência conforme sua rotina e evolução. Basta me avisar e realinhamos o plano." },
+        { q: "Você treina homens e mulheres?", a: "Sim! Atendo todos os perfis — homens, mulheres, jovens, adultos e idosos. O treino é sempre personalizado para cada pessoa." },
+        { q: "E se eu tiver lesão ou limitação física?", a: "É justamente aí que o presencial faz mais diferença. Sou especialista em biomecânica, avaliação postural e exercícios corretivos. Adapto tudo respeitando seus limites e trabalhando para superá-los com segurança." },
+        { q: "Como faço para começar?", a: "É simples! Me chame no WhatsApp (17) 99275-5039, me conte seu objetivo e agendamos uma aula experimental para você conhecer o método de perto." },
     ];
 
     return (
-        <section className="py-20 bg-white">
-            <div className="container px-4 mx-auto max-w-3xl">
+        <section className="py-24 bg-mesh-light relative overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
+
+            <div className="container px-4 mx-auto max-w-3xl relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     className="text-center mb-12"
                 >
-                    <h2 className="text-3xl md:text-5xl font-display font-bold text-gray-900 mb-4">
+                    <span className="inline-block text-sm font-bold text-primary tracking-[0.15em] uppercase mb-4">Dúvidas</span>
+                    <h2 className="text-3xl md:text-5xl font-display font-extrabold text-gray-900 mb-4 tracking-tight">
                         PERGUNTAS FREQUENTES
                     </h2>
                 </motion.div>
 
-                <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6 md:p-8">
+                <div className="bg-white/70 backdrop-blur-sm border border-gray-100/50 rounded-3xl p-6 md:p-8 shadow-premium">
                     {faqs.map((faq, index) => (
                         <AccordionItem
                             key={index}

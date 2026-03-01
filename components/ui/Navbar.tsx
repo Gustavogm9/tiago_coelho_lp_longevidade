@@ -5,6 +5,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { Menu, X } from "lucide-react";
 
+const navItems = [
+    { label: "Método", id: "solution" },
+    { label: "Depoimentos", id: "depoimentos" },
+    { label: "Sobre", id: "sobre" },
+    { label: "FAQ", id: "faq" },
+];
+
 export const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -28,8 +35,8 @@ export const Navbar = () => {
     return (
         <>
             <header
-                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                    ? "bg-white/80 backdrop-blur-md shadow-sm py-3"
+                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
+                    ? "glass shadow-premium py-2"
                     : "bg-transparent py-5"
                     }`}
             >
@@ -40,19 +47,19 @@ export const Navbar = () => {
                         className="cursor-pointer"
                         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                     >
-                        <img src="/logo.png" alt="Tiago Coelho" className="h-20 w-auto" />
+                        <img src="/logo.png" alt="Tiago Coelho" className={`w-auto transition-all duration-300 ${isScrolled ? "h-14" : "h-20"}`} />
                     </div>
 
                     {/* Desktop Nav */}
                     <nav className="hidden md:flex items-center gap-8">
-                        {["Método", "Depoimentos", "Sobre", "FAQ"].map((item) => (
+                        {navItems.map((item) => (
                             <button
-                                key={item}
-                                onClick={() => scrollToSection(item.toLowerCase() === "método" ? "solution" : item.toLowerCase())} // mapping simple names to ids
-                                className={`text-sm font-medium transition-colors hover:text-accent ${isScrolled ? "text-gray-600" : "text-white/90 hover:text-white"
-                                    }`}
+                                key={item.label}
+                                onClick={() => scrollToSection(item.id)}
+                                className={`text-sm font-semibold transition-all duration-300 hover:text-accent relative group ${isScrolled ? "text-gray-600" : "text-white/90 hover:text-white"}`}
                             >
-                                {item}
+                                {item.label}
+                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full rounded-full" />
                             </button>
                         ))}
                         <Button
@@ -66,13 +73,13 @@ export const Navbar = () => {
 
                     {/* Mobile Menu Button */}
                     <button
-                        className="md:hidden p-2 text-gray-600"
+                        className="md:hidden p-2"
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                     >
                         {isMobileMenuOpen ? (
-                            <X className={isScrolled ? "text-gray-900" : "text-white"} />
+                            <X className={`w-6 h-6 ${isScrolled ? "text-gray-900" : "text-white"}`} />
                         ) : (
-                            <Menu className={isScrolled ? "text-gray-900" : "text-white"} />
+                            <Menu className={`w-6 h-6 ${isScrolled ? "text-gray-900" : "text-white"}`} />
                         )}
                     </button>
                 </div>
@@ -82,29 +89,38 @@ export const Navbar = () => {
             <AnimatePresence>
                 {isMobileMenuOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        className="fixed inset-0 z-40 bg-white pt-24 px-6 md:hidden"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-40 bg-white/95 backdrop-blur-xl pt-28 px-6 md:hidden"
                     >
-                        <div className="flex flex-col gap-6 text-center">
-                            {["Método", "Depoimentos", "Sobre", "FAQ"].map((item) => (
-                                <button
-                                    key={item}
-                                    onClick={() => scrollToSection(item.toLowerCase() === "método" ? "solution" : item.toLowerCase())}
-                                    className="text-xl font-medium text-gray-900"
+                        <div className="flex flex-col gap-4 text-center">
+                            {navItems.map((item, i) => (
+                                <motion.button
+                                    key={item.label}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: i * 0.05 }}
+                                    onClick={() => scrollToSection(item.id)}
+                                    className="text-xl font-semibold text-gray-900 py-3 hover:text-primary transition-colors"
                                 >
-                                    {item}
-                                </button>
+                                    {item.label}
+                                </motion.button>
                             ))}
-                            <Button
-                                size="lg"
-                                variant="primary"
-                                className="w-full mt-4"
-                                onClick={() => scrollToSection("pricing")}
+                            <motion.div
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.2 }}
                             >
-                                Começar Agora
-                            </Button>
+                                <Button
+                                    size="lg"
+                                    variant="primary"
+                                    className="w-full mt-4"
+                                    onClick={() => scrollToSection("pricing")}
+                                >
+                                    Começar Agora
+                                </Button>
+                            </motion.div>
                         </div>
                     </motion.div>
                 )}

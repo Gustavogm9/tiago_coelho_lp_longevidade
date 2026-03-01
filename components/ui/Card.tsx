@@ -10,12 +10,12 @@ interface CardProps extends HTMLMotionProps<"div"> {
 
 export const Card = React.forwardRef<HTMLDivElement, CardProps>(
     ({ children, variant = "default", className = "", ...props }, ref) => {
-        const baseStyles = "bg-white rounded-2xl p-6 transition-all duration-300";
+        const baseStyles = "bg-white/90 backdrop-blur-sm rounded-2xl p-6 transition-all duration-500";
 
         const variants = {
-            default: "shadow-lg shadow-gray-200/50 hover:shadow-xl hover:shadow-gray-200/60 border border-gray-100",
-            highlight: "shadow-2xl shadow-orange-500/20 border-2 border-accent relative z-10 hover:shadow-orange-500/30",
-            bordered: "border border-gray-200 hover:border-primary/30 hover:shadow-lg",
+            default: "shadow-premium hover:shadow-premium-lg border border-gray-100/80",
+            highlight: "shadow-premium-lg border-2 border-accent/30 relative z-10 hover:border-accent/50",
+            bordered: "border border-gray-200/80 hover:border-primary/20 hover:shadow-premium",
         };
 
         return (

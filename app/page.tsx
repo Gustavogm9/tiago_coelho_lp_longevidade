@@ -1,4 +1,5 @@
 import { Hero } from "@/components/sections/Hero";
+import { CredibilityBar } from "@/components/sections/CredibilityBar";
 import { Problem } from "@/components/sections/Problem";
 import { Solution } from "@/components/sections/Solution";
 import { HowItWorks } from "@/components/sections/HowItWorks";
@@ -9,16 +10,19 @@ import { FAQ } from "@/components/sections/FAQ";
 import { Urgency } from "@/components/sections/Urgency";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { Footer } from "@/components/sections/Footer";
+import { Transformation } from "@/components/sections/Transformation";
 import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
 import { Navbar } from "@/components/ui/Navbar";
-
-import { Transformation } from "@/components/sections/Transformation";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
+import { StickyCTA } from "@/components/ui/StickyCTA";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-white overflow-x-hidden relative">
+      <ScrollProgress />
       <Navbar />
       <Hero />
+      <CredibilityBar />
       <div id="problem"><Problem /></div>
       <div id="solution"><Solution /></div>
       <Transformation />
@@ -31,6 +35,7 @@ export default function Home() {
       <FinalCTA />
       <Footer />
       <FloatingWhatsApp />
+      <StickyCTA />
     </main>
   );
 }

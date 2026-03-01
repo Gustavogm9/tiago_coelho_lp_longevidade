@@ -2,25 +2,32 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
-import { Card } from "@/components/ui/Card";
-import { Badge } from "@/components/ui/Badge";
-import { Check, X, ShieldCheck, Gift } from "lucide-react";
+import { User, Users, ShieldCheck, Gift, Check } from "lucide-react";
 
-const PlanFeature = ({ children, included = true }: { children: React.ReactNode; included?: boolean }) => (
-    <div className={`flex items-start gap-3 text-sm ${included ? "text-gray-700" : "text-gray-400"}`}>
-        {included ? (
-            <Check className="w-5 h-5 text-green-500 shrink-0" />
-        ) : (
-            <X className="w-5 h-5 text-red-300 shrink-0" />
-        )}
-        <span>{children}</span>
-    </div>
-);
+const WHATSAPP_LINK = "https://wa.me/5517992755039?text=Ol%C3%A1%20Tiago%2C%20vim%20pelo%20site%20e%20quero%20agendar%20uma%20aula%20experimental!";
+
+const personalPlans = [
+    { freq: "1x/semana", price: "R$ 320" },
+    { freq: "2x/semana", price: "R$ 600" },
+    { freq: "3x/semana", price: "R$ 840", popular: true },
+    { freq: "4x/semana", price: "R$ 1.040" },
+    { freq: "5x/semana", price: "R$ 1.200" },
+];
+
+const duoPlans = [
+    { freq: "1x/semana", price: "R$ 240" },
+    { freq: "2x/semana", price: "R$ 460" },
+    { freq: "3x/semana", price: "R$ 660", popular: true },
+    { freq: "4x/semana", price: "R$ 840" },
+    { freq: "5x/semana", price: "R$ 1.000" },
+];
 
 export const Pricing = () => {
     return (
-        <section id="pricing" className="py-20 bg-white">
-            <div className="container px-4 mx-auto">
+        <section id="pricing" className="py-24 bg-mesh-light relative overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
+
+            <div className="container px-4 mx-auto relative z-10">
 
                 {/* Header */}
                 <motion.div
@@ -29,204 +36,180 @@ export const Pricing = () => {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-3xl md:text-5xl font-display font-bold text-gray-900 mb-4">
-                        ESCOLHA SEU PLANO DE TRANSFORMAÇÃO
+                    <span className="inline-block text-sm font-bold text-primary tracking-[0.15em] uppercase mb-4">Investimento</span>
+                    <h2 className="text-3xl md:text-5xl font-display font-extrabold text-gray-900 mb-4 tracking-tight">
+                        ESCOLHA SEU <span className="text-gradient-primary">PLANO DE TREINO</span>
                     </h2>
-                    <p className="text-xl text-primary font-medium">
-                        Promoção Especial: METADE DO PREÇO nas Últimas Vagas
+                    <p className="text-xl text-gray-500 max-w-2xl mx-auto font-light">
+                        Treino presencial individual ou em dupla. Valores mensais com horário fixo reservado para você.
                     </p>
                 </motion.div>
 
                 {/* Pricing Cards */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto mb-20 items-stretch">
+                <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-20">
 
-                    {/* Plan 0 - Monthly */}
-                    <Card className="flex flex-col relative pt-12">
-                        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                            <Badge variant="outline" className="bg-white text-gray-500 border-gray-300">
-                                MENSAL 📅
-                            </Badge>
-                        </div>
-                        <div className="text-center mb-6">
-                            <h3 className="text-xl font-bold text-gray-900 mb-2">MENSAL</h3>
-                            <p className="text-gray-500 text-sm">RENOVAÇÃO AUTOMÁTICA</p>
-                        </div>
-
-                        <div className="space-y-4 mb-8 flex-1">
-                            <PlanFeature>Avaliação Física Completa</PlanFeature>
-                            <PlanFeature>Treino Personalizado no App</PlanFeature>
-                            <PlanFeature>1 Cardápio Nutricional</PlanFeature>
-                            <PlanFeature included={false}>Mudança Mensal de Treino</PlanFeature>
-                            <PlanFeature included={false}>Suporte VIP WhatsApp</PlanFeature>
-                        </div>
-
-                        <div className="text-center mt-auto">
-                            <p className="text-3xl font-bold text-success mb-1">R$ 297,00 <span className="text-sm font-normal text-gray-500">/mês</span></p>
-                            <p className="text-sm text-gray-500 mb-6">Cancele quando quiser</p>
-                            <a
-                                href="https://www.asaas.com/c/4gvspuocy6wnu56j"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="block"
-                            >
-                                <Button className="w-full" variant="primary">COMEÇAR AGORA</Button>
-                            </a>
-                            <p className="text-xs text-center text-gray-400 mt-4">⭐ Ideal para: Quem quer flexibilidade</p>
-                        </div>
-                    </Card>
-
-                    {/* Plan 1 - Quarterly */}
-                    <Card className="flex flex-col relative pt-12">
-                        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                            <Badge variant="outline" className="bg-white text-gray-500 border-gray-300">
-                                PARA COMEÇAR 🥉
-                            </Badge>
-                        </div>
-                        <div className="text-center mb-6">
-                            <h3 className="text-xl font-bold text-gray-900 mb-2">TRIMESTRAL</h3>
-                            <p className="text-gray-500 text-sm">3 MESES DE ACOMPANHAMENTO</p>
-                        </div>
-
-                        <div className="space-y-4 mb-8 flex-1">
-                            <PlanFeature>Avaliação Física Completa</PlanFeature>
-                            <PlanFeature>Treino Personalizado no App</PlanFeature>
-                            <PlanFeature>1 Cardápio Nutricional</PlanFeature>
-                            <PlanFeature included={false}>Mudança Mensal de Treino</PlanFeature>
-                            <PlanFeature included={false}>Suporte VIP WhatsApp</PlanFeature>
-                        </div>
-
-                        <div className="text-center mt-auto">
-                            <p className="text-sm text-gray-400 line-through">De R$ 994,00</p>
-                            <p className="text-3xl font-bold text-success mb-1">R$ 497,00 <span className="text-sm font-normal text-gray-500">à vista</span></p>
-                            <p className="text-sm text-gray-500 mb-6">ou 3x de R$ 177,00</p>
-                            <a
-                                href="https://www.asaas.com/c/9fkhuiiti5hkr5ey"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="block"
-                            >
-                                <Button className="w-full" variant="primary">COMEÇAR AGORA</Button>
-                            </a>
-                            <p className="text-xs text-center text-gray-400 mt-4">⭐ Ideal para: Quem quer testar sem compromisso longo</p>
-                        </div>
-                    </Card>
-
-                    {/* Plan 2 - Semiannual (Highlight) */}
-                    <Card variant="highlight" className="flex flex-col relative pt-12 border-accent transform md:-translate-y-4 shadow-orange-500/20">
-                        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                            <Badge variant="accent" className="px-4 py-2 text-sm bg-accent text-white border-none shadow-lg">
-                                MAIS ESCOLHIDO 🔥 🥈
-                            </Badge>
-                        </div>
-                        <div className="text-center mb-6">
-                            <h3 className="text-xl font-bold text-gray-900 mb-2">SEMESTRAL</h3>
-                            <p className="text-gray-500 text-sm">6 MESES DE ACOMPANHAMENTO</p>
-                        </div>
-
-                        <div className="space-y-4 mb-8 flex-1">
-                            <PlanFeature>Avaliação Física Completa</PlanFeature>
-                            <PlanFeature>Treino Personalizado no App</PlanFeature>
-                            <PlanFeature>2 Cardápios Nutricionais</PlanFeature>
-                            <PlanFeature>Mudança Mensal de Treino</PlanFeature>
-                            <PlanFeature included={false}>Suporte VIP WhatsApp</PlanFeature>
-                        </div>
-
-                        <div className="bg-orange-50 p-2 rounded text-center mb-4">
-                            <p className="text-xs font-bold text-orange-700">💰 Economia de R$ 300 vs 2x o trimestral</p>
-                        </div>
-
-                        <div className="text-center mt-auto">
-                            <p className="text-sm text-gray-400 line-through">De R$ 1.394,00</p>
-                            <p className="text-4xl font-bold text-success mb-1">R$ 697,00 <span className="text-sm font-normal text-gray-500">à vista</span></p>
-                            <p className="text-sm text-gray-500 mb-6">ou 6x de R$ 137,00</p>
-                            <a
-                                href="https://www.asaas.com/c/ottiknymyam64w4e"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="block"
-                            >
-                                <Button size="lg" className="w-full text-lg" variant="primary">GARANTIR MINHA VAGA</Button>
-                            </a>
-                            <p className="text-xs text-center text-gray-400 mt-4">⭐ Ideal para: Quem quer resultados sólidos</p>
-                        </div>
-                    </Card>
-
-                    {/* Plan 3 - Annual */}
-                    <Card className="flex flex-col relative pt-12">
-                        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                            <Badge variant="outline" className="bg-blue-50 text-blue-800 border-blue-200">
-                                MELHOR CUSTO-BENEFÍCIO 🥇
-                            </Badge>
-                        </div>
-                        <div className="text-center mb-6">
-                            <h3 className="text-xl font-bold text-gray-900 mb-2">ANUAL</h3>
-                            <p className="text-gray-500 text-sm">12 MESES DE ACOMPANHAMENTO</p>
-                        </div>
-
-                        <div className="space-y-4 mb-8 flex-1">
-                            <PlanFeature>Avaliação Física Completa</PlanFeature>
-                            <PlanFeature>Treino Personalizado no App</PlanFeature>
-                            <PlanFeature>12 Cardápios Nutricionais (1/mês)</PlanFeature>
-                            <PlanFeature>Mudança Mensal de Treino</PlanFeature>
-                            <PlanFeature>MEU SUPORTE VIP ILIMITADO 📱</PlanFeature>
-                        </div>
-
-                        <div className="bg-blue-50 p-2 rounded text-center mb-4 space-y-1">
-                            <p className="text-xs font-bold text-blue-700">💰 Economia de R$ 1.000 vs 4x o trimestral</p>
-                            <p className="text-xs font-bold text-blue-700">💎 BÔNUS: Acesso ao meu WhatsApp particular</p>
-                        </div>
-
-                        <div className="text-center mt-auto">
-                            <p className="text-sm text-gray-400 line-through">De R$ 1.994,00</p>
-                            <p className="text-3xl font-bold text-success mb-1">R$ 997,00 <span className="text-sm font-normal text-gray-500">à vista</span></p>
-                            <p className="text-sm text-gray-500 mb-6">ou 12x de R$ 97,00</p>
-                            <a
-                                href="https://www.asaas.com/c/2v6zq7gvq9i3ut1k"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="block"
-                            >
-                                <Button className="w-full bg-primary hover:bg-blue-900" variant="secondary">QUERO O MELHOR RESULTADO</Button>
-                            </a>
-                            <p className="text-xs text-center text-gray-400 mt-4">⭐ Ideal para: Transformação completa</p>
-                        </div>
-                    </Card>
-                </div>
-
-                {/* Bonus Section */}
-                <div className="bg-amber-100 rounded-3xl p-8 md:p-12 mb-20">
-                    <div className="max-w-4xl mx-auto">
-                        <h3 className="text-2xl font-bold text-amber-900 mb-8 flex items-center gap-3">
-                            <Gift className="w-8 h-8" />
-                            BÔNUS EXCLUSIVOS PARA QUEM SE INSCREVER HOJE:
-                        </h3>
-                        <div className="grid md:grid-cols-2 gap-4">
-                            {[
-                                "E-book Doces Fit",
-                                "E-book Pré e Pós Treino"
-                            ].map((bonus, i) => (
-                                <div key={i} className="flex items-center gap-3 bg-white/60 p-4 rounded-lg">
-                                    <div className="w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center shrink-0">✓</div>
-                                    <span className="font-medium text-amber-900">{bonus}</span>
+                    {/* Personal Card */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="relative"
+                    >
+                        {/* Gradient border */}
+                        <div className="absolute -inset-[1px] rounded-3xl bg-gradient-to-br from-primary/30 via-blue-300/20 to-primary/30" />
+                        <div className="relative bg-white rounded-3xl p-7 pt-14 flex flex-col h-full">
+                            {/* Badge */}
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                                <div className="flex items-center gap-2 bg-gradient-to-r from-primary to-primary-light text-white px-5 py-2.5 rounded-2xl text-sm font-bold shadow-premium-primary">
+                                    <User className="w-4 h-4" /> PERSONAL
                                 </div>
-                            ))}
+                            </div>
+
+                            <div className="text-center mb-6">
+                                <h3 className="text-2xl font-extrabold text-gray-900 mb-1 font-display">INDIVIDUAL</h3>
+                                <p className="text-gray-500 text-sm font-medium">Acompanhamento exclusivo 1 a 1</p>
+                            </div>
+
+                            <div className="space-y-0 mb-8 flex-1">
+                                {personalPlans.map((plan, i) => (
+                                    <div
+                                        key={i}
+                                        className={`flex items-center justify-between py-3.5 px-4 border-b border-gray-50 last:border-b-0 rounded-xl transition-all duration-200 ${plan.popular ? "bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-100 shadow-sm" : "hover:bg-gray-50"}`}
+                                    >
+                                        <div className="flex items-center gap-3">
+                                            <span className="text-base font-semibold text-gray-800">{plan.freq}</span>
+                                            {plan.popular && (
+                                                <span className="text-[10px] bg-gradient-to-r from-primary to-primary-light text-white px-2.5 py-0.5 rounded-lg font-bold tracking-wider">POPULAR</span>
+                                            )}
+                                        </div>
+                                        <span className="text-xl font-extrabold text-gray-900 font-display">{plan.price}<span className="text-xs font-normal text-gray-500 ml-0.5">/mês</span></span>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="text-center mt-auto">
+                                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="block">
+                                    <Button size="lg" className="w-full text-base" variant="secondary">
+                                        AGENDAR AULA EXPERIMENTAL
+                                    </Button>
+                                </a>
+                                <p className="text-xs text-gray-500 mt-3 font-medium">Horários sujeitos à disponibilidade</p>
+                            </div>
+                        </div>
+                    </motion.div>
+
+                    {/* Duo Card */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.1 }}
+                        className="relative"
+                    >
+                        {/* Gradient border */}
+                        <div className="absolute -inset-[1px] rounded-3xl bg-gradient-to-br from-accent/40 via-orange-300/20 to-accent/40" />
+                        <div className="relative bg-white rounded-3xl p-7 pt-14 flex flex-col h-full">
+                            {/* Badge */}
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                                <div className="flex items-center gap-2 bg-gradient-to-r from-accent to-accent-dark text-white px-5 py-2.5 rounded-2xl text-sm font-bold shadow-premium-accent">
+                                    <Users className="w-4 h-4" /> DUO
+                                </div>
+                            </div>
+
+                            <div className="text-center mb-6">
+                                <h3 className="text-2xl font-extrabold text-gray-900 mb-1 font-display">EM DUPLA</h3>
+                                <p className="text-gray-500 text-sm font-medium">Treine com amigo(a), cônjuge ou familiar • valor por pessoa</p>
+                            </div>
+
+                            <div className="space-y-0 mb-8 flex-1">
+                                {duoPlans.map((plan, i) => (
+                                    <div
+                                        key={i}
+                                        className={`flex items-center justify-between py-3.5 px-4 border-b border-gray-50 last:border-b-0 rounded-xl transition-all duration-200 ${plan.popular ? "bg-gradient-to-r from-orange-50 to-amber-50 border-orange-100 shadow-sm" : "hover:bg-gray-50"}`}
+                                    >
+                                        <div className="flex items-center gap-3">
+                                            <span className="text-base font-semibold text-gray-800">{plan.freq}</span>
+                                            {plan.popular && (
+                                                <span className="text-[10px] bg-gradient-to-r from-accent to-accent-dark text-white px-2.5 py-0.5 rounded-lg font-bold tracking-wider">POPULAR</span>
+                                            )}
+                                        </div>
+                                        <span className="text-xl font-extrabold text-gray-900 font-display">{plan.price}<span className="text-xs font-normal text-gray-500 ml-0.5">/mês</span></span>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="bg-gradient-to-r from-orange-50 to-amber-50 p-3 rounded-xl text-center mb-4 border border-orange-100/50">
+                                <p className="text-sm font-bold text-orange-700">Economize até 25% treinando em dupla</p>
+                            </div>
+
+                            <div className="text-center mt-auto">
+                                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="block">
+                                    <Button size="lg" className="w-full text-base" variant="primary">
+                                        AGENDAR AULA EXPERIMENTAL
+                                    </Button>
+                                </a>
+                                <p className="text-xs text-gray-500 mt-3 font-medium">Ambos treinam no mesmo horário</p>
+                            </div>
+                        </div>
+                    </motion.div>
+                </div>
+
+                {/* Bonus */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="relative rounded-3xl overflow-hidden mb-20"
+                >
+                    <div className="absolute -inset-[1px] rounded-3xl bg-gradient-to-br from-amber-300/40 via-amber-200/20 to-orange-300/40" />
+                    <div className="relative bg-gradient-to-br from-amber-50 to-orange-50/50 rounded-3xl p-8 md:p-12">
+                        <div className="max-w-4xl mx-auto">
+                            <h3 className="text-2xl font-extrabold text-amber-900 mb-8 flex items-center gap-3 font-display">
+                                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center shadow-lg">
+                                    <Gift className="w-6 h-6 text-white" />
+                                </div>
+                                INCLUSO EM TODOS OS PLANOS:
+                            </h3>
+                            <div className="grid md:grid-cols-2 gap-3">
+                                {[
+                                    "Avaliação física e postural completa",
+                                    "Treino 100% personalizado",
+                                    "Correção de execução em tempo real",
+                                    "Reavaliações periódicas",
+                                ].map((bonus, i) => (
+                                    <div key={i} className="flex items-center gap-3 bg-white/70 backdrop-blur-sm p-4 rounded-xl border border-white/50">
+                                        <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 text-white flex items-center justify-center shrink-0 shadow-sm">
+                                            <Check className="w-4 h-4" />
+                                        </div>
+                                        <span className="font-semibold text-amber-900 text-sm">{bonus}</span>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
-                </div>
+                </motion.div>
 
-                {/* Guarantee */}
-                <div className="max-w-3xl mx-auto text-center border-2 border-green-500 rounded-2xl p-8 md:p-12 relative bg-white">
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-4">
-                        <ShieldCheck className="w-16 h-16 text-green-500 fill-green-100" />
+                {/* Trust */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="relative max-w-3xl mx-auto"
+                >
+                    <div className="absolute -inset-[1px] rounded-3xl bg-gradient-to-br from-green-400/30 via-emerald-300/20 to-green-400/30" />
+                    <div className="relative bg-white rounded-3xl p-8 md:p-12 text-center">
+                        <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center mx-auto mb-6 shadow-lg">
+                            <ShieldCheck className="w-8 h-8 text-white" />
+                        </div>
+
+                        <h3 className="text-2xl font-extrabold text-gray-900 mb-4 font-display">AULA EXPERIMENTAL SEM COMPROMISSO</h3>
+                        <p className="text-gray-500 text-lg mb-6 font-light leading-relaxed">
+                            Agende uma aula experimental para conhecer o método de perto.
+                            Sem contrato, sem pegadinha. Você decide se quer continuar depois de experimentar.
+                        </p>
+                        <p className="font-bold text-gray-900">O compromisso é com seu resultado.</p>
                     </div>
-
-                    <h3 className="text-2xl font-bold text-gray-900 mt-6 mb-4">GARANTIA INCONDICIONAL DE 7 DIAS</h3>
-                    <p className="text-gray-600 text-lg mb-6">
-                        Se nos primeiros 7 dias você achar que o acompanhamento não é para você, devolvemos 100% do seu dinheiro.
-                        Sem perguntas. Sem burocracia. Sem ressentimentos.
-                    </p>
-                    <p className="font-bold text-gray-900">O risco é TODO meu.</p>
-                </div>
+                </motion.div>
 
             </div>
         </section>
