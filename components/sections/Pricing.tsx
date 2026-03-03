@@ -7,19 +7,19 @@ import { User, Users, ShieldCheck, Gift, Check } from "lucide-react";
 const WHATSAPP_LINK = "https://wa.me/5517992755039?text=Ol%C3%A1%20Tiago%2C%20vim%20pelo%20site%20e%20quero%20agendar%20uma%20aula%20experimental!";
 
 const personalPlans = [
-    { freq: "1x/semana", price: "R$ 320" },
-    { freq: "2x/semana", price: "R$ 600" },
-    { freq: "3x/semana", price: "R$ 840", popular: true },
-    { freq: "4x/semana", price: "R$ 1.040" },
-    { freq: "5x/semana", price: "R$ 1.200" },
+    { freq: "1x/semana", price: "R$ 360" },
+    { freq: "2x/semana", price: "R$ 680" },
+    { freq: "3x/semana", price: "R$ 960", popular: true },
+    { freq: "4x/semana", price: "R$ 1.200" },
+    { freq: "5x/semana", price: "R$ 1.400" },
 ];
 
 const duoPlans = [
-    { freq: "1x/semana", price: "R$ 240" },
-    { freq: "2x/semana", price: "R$ 460" },
-    { freq: "3x/semana", price: "R$ 660", popular: true },
-    { freq: "4x/semana", price: "R$ 840" },
-    { freq: "5x/semana", price: "R$ 1.000" },
+    { freq: "1x/semana", price: "R$ 280" },
+    { freq: "2x/semana", price: "R$ 540" },
+    { freq: "3x/semana", price: "R$ 780", popular: true },
+    { freq: "4x/semana", price: "R$ 960" },
+    { freq: "5x/semana", price: "R$ 1.150" },
 ];
 
 export const Pricing = () => {
