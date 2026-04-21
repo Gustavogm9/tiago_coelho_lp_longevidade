@@ -1,75 +1,59 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { AlertCircle, Clock } from "lucide-react";
 import { Button } from "@/components/ui/Button";
-import { AlertTriangle, Clock } from "lucide-react";
 
-const WHATSAPP_LINK = "https://wa.me/5517992755039?text=Ol%C3%A1%20Tiago%2C%20vim%20pelo%20site%20e%20quero%20garantir%20meu%20hor%C3%A1rio!";
+const WHATSAPP_LINK = "https://wa.me/5517992755039?text=Ol%C3%A1%20Tiago%2C%20gostaria%20de%20reservar%20uma%20das%20aplica%C3%A7%C3%B5es%20da%20AFA%20desta%20semana!";
 
 export const Urgency = () => {
     return (
-        <section className="py-24 relative overflow-hidden">
-            {/* Gradient background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-50 via-amber-50 to-orange-100" />
-            <div className="absolute inset-0 bg-dots" style={{ opacity: 0.3 }} />
-            <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-orange-200 to-transparent" />
+        <section className="py-24 bg-amber-50 relative overflow-hidden">
+            {/* Decors */}
+            <div className="absolute top-10 right-10 w-64 h-64 bg-accent/10 rounded-full blur-[60px]" />
+            <div className="absolute bottom-10 left-10 w-64 h-64 bg-blue-500/10 rounded-full blur-[60px]" />
 
-            <div className="container px-4 mx-auto max-w-4xl text-center relative z-10">
+            <div className="container px-4 mx-auto max-w-4xl relative z-10 text-center">
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                 >
-                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center mx-auto mb-6 shadow-lg">
-                        <AlertTriangle className="w-8 h-8 text-white" />
+                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-8 shadow-md">
+                        <AlertCircle className="w-8 h-8 text-accent" />
                     </div>
 
                     <h2 className="text-3xl md:text-5xl font-display font-extrabold text-gray-900 mb-6 tracking-tight">
-                        ATENÇÃO: <span className="text-gradient-accent">HORÁRIOS LIMITADOS</span>
+                        Por que eu não posso ter muitos alunos.
                     </h2>
-
-                    <div className="bg-white/70 backdrop-blur-sm p-6 rounded-2xl border border-white/50 shadow-premium mb-8 max-w-2xl mx-auto">
-                        <h3 className="font-bold text-lg text-gray-800 mb-3">Por que limito minha agenda?</h3>
-                        <p className="text-gray-600 leading-relaxed font-light">
-                            Cada aluno recebe atenção total durante a sessão. Diferente de instrutores de academia que atendem várias pessoas ao mesmo tempo, eu foco <strong className="text-accent font-semibold">100% em você</strong>. Por isso, mantenho uma agenda controlada para garantir a qualidade de cada atendimento.
+                    
+                    <div className="bg-white p-8 md:p-10 rounded-3xl shadow-premium border border-amber-100 max-w-3xl mx-auto mb-10 text-left">
+                        <p className="text-gray-700 text-lg mb-6 leading-relaxed">
+                            Programas automatizados aceitam todo mundo. Uma academia normal matricula centenas e larga as pessoas nas máquinas.
+                        </p>
+                        <p className="text-gray-700 text-lg mb-6 leading-relaxed font-semibold">
+                            Eu realmente acompanho cada idoso de perto.
+                        </p>
+                        <p className="text-gray-700 text-lg leading-relaxed">
+                            Faço as avaliações clínicas, crio relatórios funcionais para a família, monto os corretivos da semana e ajusto a rota a cada sessão da nossa Avaliação AFA.
                         </p>
                     </div>
 
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="relative max-w-md mx-auto mb-10"
-                    >
-                        <div className="absolute -inset-[1px] rounded-3xl bg-gradient-to-br from-orange-300/50 via-amber-200/30 to-orange-300/50" />
-                        <div className="relative bg-white rounded-3xl p-8 shadow-premium-lg">
-                            <h4 className="text-lg font-extrabold text-gray-900 mb-6 tracking-tight font-display">
-                                DISPONIBILIDADE ATUAL
-                            </h4>
-                            <div className="space-y-3 text-left">
-                                {[
-                                    { period: "Manhã", status: "Poucos horários disponíveis", color: "text-orange-600", bg: "bg-gradient-to-r from-orange-50 to-amber-50", border: "border-orange-100/50" },
-                                    { period: "Tarde", status: "Horários disponíveis", color: "text-green-600", bg: "bg-gradient-to-r from-green-50 to-emerald-50", border: "border-green-100/50" },
-                                    { period: "Noite", status: "Poucos horários disponíveis", color: "text-orange-600", bg: "bg-gradient-to-r from-orange-50 to-amber-50", border: "border-orange-100/50" },
-                                ].map((item, i) => (
-                                    <div key={i} className={`flex items-center gap-3 ${item.color} font-bold ${item.bg} p-3.5 rounded-xl border ${item.border}`}>
-                                        <Clock className="w-5 h-5 shrink-0" />
-                                        <span className="text-sm">{item.period} — {item.status}</span>
-                                    </div>
-                                ))}
-                            </div>
-                            <p className="text-xs text-gray-500 mt-4 text-center font-medium">
-                                Fale comigo no WhatsApp para verificar a disponibilidade.
-                            </p>
+                    <div className="bg-gradient-to-r from-accent-dark via-accent to-accent-light text-white p-8 rounded-3xl shadow-premium-accent inline-flex flex-col items-center max-w-xl mx-auto relative overflow-hidden">
+                        <div className="absolute right-0 top-0 opacity-10">
+                            <Clock className="w-48 h-48 -mr-10 -mt-10" />
                         </div>
-                    </motion.div>
-
-                    <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                        <Button size="lg" variant="primary" className="text-xl px-12 py-6 animate-pulse-glow">
-                            GARANTIR MEU HORÁRIO AGORA
-                        </Button>
-                    </a>
-
+                        <h3 className="font-display font-extrabold text-2xl mb-4 relative z-10">Por isso as vagas da AFA são limitadas</h3>
+                        <p className="text-amber-100 mb-8 relative z-10 font-medium px-4">
+                            Consigo realizar no máximo <strong className="text-white">5 NOVAS AVALIAÇÕES de risco</strong> por semana. 
+                            Garantir o atendimento de qualidade exige esse controle rígido de agenda.
+                        </p>
+                        <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="relative z-10 w-full max-w-xs">
+                            <Button size="xl" variant="outline" className="w-full bg-white text-accent hover:bg-amber-50 hover:text-accent-dark border-none shadow-md font-bold">
+                                Verificar Vagas Esta Semana
+                            </Button>
+                        </a>
+                    </div>
                 </motion.div>
             </div>
         </section>
